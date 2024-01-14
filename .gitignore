@@ -1,0 +1,5 @@
+.env
+*.env
+coinenv/
+__pycache__/
+*.csv
