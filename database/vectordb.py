@@ -1,4 +1,5 @@
 import os
+import redis
 from langchain_community.vectorstores.redis import Redis
 from langchain_community.document_loaders.csv_loader import CSVLoader
 from langchain_openai import OpenAIEmbeddings
@@ -23,7 +24,7 @@ class VectorDB:
     def check_redis_connection(self):
         try:
             # Attempt to create a Redis client and ping the server
-            self.redis_client = Redis(redis_url=self.redis_url)
+            self.redis_client = redis.Redis(host=self.redis_host, port=self.redis_port, password=self.redis_password)
             ping_response = self.redis_client.ping()
             if ping_response:
                 print("Connected to Redis successfully!")
